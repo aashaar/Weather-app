@@ -13,7 +13,7 @@ const geocode = (address, callback)=>{
         }
         else if(body.features.length === 0)
         {
-            callback('Unable to find coordinates for given location',undefined)
+            callback('Unable to find location. Please try another search',undefined)
         }
         else
         {
