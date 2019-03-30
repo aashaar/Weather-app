@@ -58,6 +58,26 @@ app.get('/weather',(req,res)=>{
     })
 })
 
+//for 404 page inside Help route:
+app.get('/help/*',(req,res)=>{
+    //res.send('Help article not found')
+    res.render('404',{
+        title: 'Error 404',
+        errorMessage: 'Help article not found',
+        name: 'Aashaar'
+    })
+})
+
+//for 404 page (this code has to be at the end, just before starting the server)
+app.get('*',(req,res)=>{
+    //res.send('My 404 page')
+    res.render('404',{
+        title: 'Error 404',
+        errorMessage: 'Requested page not found',
+        name: 'Aashaar'
+    })
+})
+
 //to start the server.
 app.listen(3000,()=>{
     console.log('Server is up on port 3000')
