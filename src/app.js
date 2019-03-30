@@ -7,8 +7,36 @@ const app = express()
 
 const publicDirectoryPath = path.join(__dirname,'../public')
 
+//to set default template engine:
+app.set('view engine', 'hbs')
+
 //for home page:html
 app.use(express.static(publicDirectoryPath))
+
+//for home page:
+app.get('',(req, res)=>{
+    res.render('index',{
+        title: 'Weather',
+        name: 'Aashaar'
+    })
+})
+
+
+//for About page:
+app.get('/about',(req,res)=>{
+    res.render('about',{
+        title: 'About Me',
+        name: 'Aashaar'
+    })
+})
+
+//for Help page:
+app.get('/help',(req,res)=>{
+    res.render('help',{
+        title: 'Help',
+        message: 'This is the Help page'
+    })
+})
 
 
 //for weather page:json
