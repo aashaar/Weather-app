@@ -1,3 +1,4 @@
+// ###################################
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
@@ -68,6 +69,7 @@ app.get('/weather',(req,res)=>{
                error //short hand for error:error
            }) 
         }
+
         forecast(latitude,longitude,(error, forecastData)=>{
             if(error)
             {
