@@ -32,7 +32,7 @@ app.get('',(req, res)=>{
 })
 
 
-//for About page:
+//for About page: will try to get /about page in views folder
 app.get('/about',(req,res)=>{
     res.render('about',{
         title: 'About Me',
@@ -40,7 +40,7 @@ app.get('/about',(req,res)=>{
     })
 })
 
-//for Help page:
+//for Help page: will try to get /help page in views folder
 app.get('/help',(req,res)=>{
     res.render('help',{
         title: 'Help',
@@ -52,9 +52,29 @@ app.get('/help',(req,res)=>{
 
 //for weather page:json
 app.get('/weather',(req,res)=>{
+    if(!req.query.address)
+    {
+        return res.send({
+            error: 'You must provide an address.'
+        })
+    }
     res.send({
         location: 'Dallas',
-        forcast: 'It is 17 degrees Celsius'
+        forcast: 'It is 17 degrees Celsius',
+        address: req.query.address
+    })
+})
+
+app.get('/products',(req,res)=>{
+    if(!req.query.search)
+    {
+        return res.send({
+            error: 'You must provide a search term'
+        })
+    }
+    console.log(req.query)
+    res.send({
+        products:[]
     })
 })
 
